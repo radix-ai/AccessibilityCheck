@@ -1,0 +1,59 @@
+body {
+  font-family: Roboto, Arial, Sans Serif;
+}
+.container {
+    max-width: 1280px;
+    width: 90%;
+    margin: 0 auto;
+}
+@media (min-width: 992px)
+.container {
+    width: 970px;
+}
+@media (min-width: 768px)
+.container {
+    width: 750px;
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.screenshot {
+    width: 300px;
+}
+h1, h2, h3 {
+    color: #008bac;
+}
+a {
+    color: #008bac;
+}
+.button {
+    border-radius: 0.3em 0.3em 0.3em 0.3em;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 0 rgba(255, 255, 255, 0.15), 0 -0.4em 1.6em rgba(0, 0, 0, 0.4) inset;
+    position: relative;
+    background: #008bac;
+    color: #fff;
+    width: 420px;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.screen-hide {
+   display: none;
+}
+#button-title {
+    font-size: 20px;
+}
+.button-ins {
+    font-size: 12px;
+}
+#add-bookmarklet {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
