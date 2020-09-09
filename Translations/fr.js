@@ -163,25 +163,25 @@ _global.translation['fr'] = {
 
 
     //1_3_4.js
-    ,"1_3_4.RestrictView" : 'Check that content does not restrict its view and operation to a single display orientation, such as portrait or landscape, unless a specific display orientation is essential.'
+    ,"1_3_4.RestrictView" : 'Vérifiez que le contenu ne limite pas son affichage et son fonctionnement à une seule orientation d\'affichage, telle que portrait ou paysage, à moins qu\'une orientation d\'affichage spécifique ne soit essentielle.'
 
 
     //1_3_5.js
-    ,"1_3_5_H98.FaultyValue" : 'This element contains a potentially faulty value in its autocomplete attribute: {{valuesStr}}. See https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute</a>.'
-    ,"1_3_5_H98.InvalidAutocomplete_Text" : 'Invalid autocomplete value: {{x}}. Element does not belong to Text control group. See https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute</a>'
-    ,"1_3_5_H98.InvalidAutocomplete_Multiline" : 'Invalid autocomplete value: {{x}}. Element does not belong to Multiline control group. See https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute'
-    ,"1_3_5_H98.InvalidAutocomplete_Password" : 'Invalid autocomplete value: {{x}}. Element does not belong to Password control group. See https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute'
-    ,"1_3_5_H98.InvalidAutocomplete_Url" : 'Invalid autocomplete value: {{x}}. Element does not belong to Url control group. See https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute'
-    ,"1_3_5_H98.InvalidAutocomplete_Telephone" : 'Invalid autocomplete value: {{x}}. Element does not belong to Telephone control group. See https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute'
-    ,"1_3_5_H98.InvalidAutocomplete_Numeric" : 'Invalid autocomplete value: {{x}}. Element does not belong to Numeric control group. See https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute'
-    ,"1_3_5_H98.InvalidAutocomplete_Month" : 'Invalid autocomplete value: {{x}}. Element does not belong to Month control group. See https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute'
-    ,"1_3_5_H98.InvalidAutocomplete_Date" : 'Invalid autocomplete value: {{x}}. Element does not belong to Date control group. See https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute'
-    ,"1_3_5_H98.Purpose" : 'Check that the input field serves a purpose identified in the Input Purposes for User Interface Components section; and that the content is implemented using technologies with support for identifying the expected meaning for form input data.'
-    ,"1_3_5_H98.MissingAutocomplete" : 'This element does not have an autocomplete attribute. If this field collects information about the user, consider adding one to comply with this Success Criterion.'
+    ,"1_3_5_H98.FaultyValue" : 'Cet élément contient une valeur potentiellement erronée dans son attribut d\'autocomplétion : {{valuesStr}}. Voir https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute'
+    ,"1_3_5_H98.InvalidAutocomplete_Text" : 'Valeur d\'autocomplétion invalide : {{x}}. L\'élément n\'appartient pas au groupe de contrôle Text. Voir https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute'
+    ,"1_3_5_H98.InvalidAutocomplete_Multiline" : 'Valeur d\'autocomplétion invalide : {{x}}. L\'élément n\'appartient pas au groupe de contrôle Multiline. Voir https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute'
+    ,"1_3_5_H98.InvalidAutocomplete_Password" : 'Valeur d\'autocomplétion invalide : {{x}}. L\'élément n\'appartient pas au groupe de contrôle Password. Voir https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute'
+    ,"1_3_5_H98.InvalidAutocomplete_Url" : 'Valeur d\'autocomplétion invalide : {{x}}. L\'élément n\'appartient pas au groupe de contrôle Url. Voir https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute'
+    ,"1_3_5_H98.InvalidAutocomplete_Telephone" : 'Valeur d\'autocomplétion invalide : {{x}}. L\'élément n\'appartient pas au groupe de contrôle Telephone. Voir https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute'
+    ,"1_3_5_H98.InvalidAutocomplete_Numeric" : 'Valeur d\'autocomplétion invalide : {{x}}. L\'élément n\'appartient pas au groupe de contrôle Numeric. Voir https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute'
+    ,"1_3_5_H98.InvalidAutocomplete_Month" : 'Valeur d\'autocomplétion invalide : {{x}}. L\'élément n\'appartient pas au groupe de contrôle Month. Voir https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute'
+    ,"1_3_5_H98.InvalidAutocomplete_Date" : 'Valeur d\'autocomplétion invalide : {{x}}. L\'élément n\'appartient pas au groupe de contrôle Date. Voir https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute'
+    ,"1_3_5_H98.Purpose" : 'Vérifiez que le champ de saisie répond à un objectif identifié dans la section Objectifs de saisie des composants de l\'interface utilisateur ; et que le contenu est mis en œuvre à l\'aide de technologies permettant d\'identifier la signification attendue des données saisies dans le formulaire.'
+    ,"1_3_5_H98.MissingAutocomplete" : 'Cet élément n\'a pas d\'attribut d\'autocomplétion. Si ce champ recueille des informations sur l\'utilisateur, envisagez d\'en ajouter un pour respecter ce critère de réussite.'
 
 
     //1_3_6.js
-    ,"1_3_6_ARIA11.Check" : 'Check that the purpose of User Interface Components, icons, and regions can be programmatically determined.'
+    ,"1_3_6_ARIA11.Check" : 'Vérifiez que l\'objectif des composants de l\'interface utilisateur, des icônes et des régions peut être déterminé par programme.'
 
 
     //1_4_1.js
@@ -241,36 +241,37 @@ _global.translation['fr'] = {
 
 
     //1_4_10.js
-    ,"1_4_10_C32,C31,C33,C38,SCR34,G206.Check" : "Check that content can be presented without loss of information or functionality, and without requiring scrolling in two dimensions for: \
-    Vertical scrolling content at a width equivalent to 320 CSS pixels; \
-    Horizontal scrolling content at a height equivalent to 256 CSS pixels; \
-    Except for parts of the content which require two-dimensional layout for usage or meaning."
-    ,"1_4_10_C32,C31,C33,C38,SCR34,G206.Fixed" : 'This element has "position: fixed". This may require scrolling in two dimensions, which is considered a failure of this Success Criterion.'
-    ,"1_4_10_C32,C31,C33,C38,SCR34,G206.Scrolling" : 'Preformatted text may require scrolling in two dimensions, which is considered a failure of this Success Criterion.'
-    ,"1_4_10_C32,C31,C33,C38,SCR34,G206.Zoom" : "Interfering with a user agent's ability to zoom may be a failure of this Success Criterion."
+    ,"1_4_10_C32,C31,C33,C38,SCR34,G206.Check" : "Vérifier que le contenu peut être présenté sans perte d'information ou de fonctionnalité, et sans qu'il soit nécessaire de le faire défiler en deux dimensions :  \
+        Contenu à défilement vertical d'une largeur équivalente à 320 pixels CSS; \
+        Contenu à défilement horizontal d'une hauteur équivalente à 256 pixels CSS;  \
+        A l'exception des parties du contenu qui nécessitent une mise en page en deux dimensions pour l'utilisation ou la signification."
+    ,"1_4_10_C32,C31,C33,C38,SCR34,G206.Fixed" : 'Cet élément a une "position: fixed". Cela peut nécessiter un défilement en deux dimensions, ce qui est considéré comme un échec de ce critère de réussite.'
+    ,"1_4_10_C32,C31,C33,C38,SCR34,G206.Scrolling" : 'Le texte préformaté peut nécessiter un défilement en deux dimensions, ce qui est considéré comme un échec de ce critère de réussite.'
+    ,"1_4_10_C32,C31,C33,C38,SCR34,G206.Zoom" : "Interférer avec la capacité d'un agent utilisateur à zoomer peut être un échec de ce critère de réussite."
 
 
     //1_4_11.js
-    ,"1_4_11_G195,G207,G18,G145,G174,F78.Check" : 'Check that the visual presentation of the following have a contrast ratio of at least 3:1 against adjacent color(s): \
-    User Interface Components: Visual information required to identify user interface components and states, except for inactive components or where the appearance of the component is determined by the user agent and not modified by the author; \
-    Graphical Objects: Parts of graphics required to understand the content, except when a particular presentation of graphics is essential to the information being conveyed.'
+    ,"1_4_11_G195,G207,G18,G145,G174,F78.Check" : 'Vérifiez que la présentation visuelle des éléments suivants présente un rapport de contraste d\'au moins 3:1 par rapport à la (aux) couleur(s) adjacente(s) : \
+        Composants de l\'interface utilisateur : Informations visuelles nécessaires pour identifier les composants et les états de l\'interface utilisateur, sauf pour les composants inactifs ou lorsque l\'apparence du composant est déterminée par l\'agent utilisateur et non modifiée par l\'auteur; \
+        Objets graphiques : Parties de graphiques nécessaires pour comprendre le contenu, sauf lorsqu\'une présentation particulière des graphiques est essentielle à l\'information véhiculée. \
+    '
 
 
     //1_4_12.js
-    ,"1_4_12_C36,C35.Check" : 'Check that no loss of content or functionality occurs by setting all of the following and by changing no other style property: \
+    ,"1_4_12_C36,C35.Check" : 'Vérifiez qu\'aucune perte de contenu ou de fonctionnalité ne se produit en définissant tous les éléments suivants et en ne modifiant aucune autre propriété de style: \
      \
-        Line height (line spacing) to at least 1.5 times the font size; \
-        Spacing following paragraphs to at least 2 times the font size; \
-        Letter spacing (tracking) to at least 0.12 times the font size; \
-        Word spacing to at least 0.16 times the font size.'
+     Hauteur de ligne (interligne) à au moins 1,5 fois la taille de la police; \
+     Espacement des paragraphes suivants à au moins 2 fois la taille de la police; \
+     Espacement des lettres (suivi) d\'au moins 0,12 fois la taille de la police; \
+     Espacement des mots d\'au moins 0,16 fois la taille de la police.'
 
-    
-    //1_4_13.js
-    ,"1_4_13_F95.Check" : 'Check that where receiving and then removing pointer hover or keyboard focus triggers additional content to become visible and then hidden, the following are true: \
-     \
-        Dismissable: A mechanism is available to dismiss the additional content without moving pointer hover or keyboard focus, unless the additional content communicates an input error or does not obscure or replace other content; \
-        Hoverable: If pointer hover can trigger the additional content, then the pointer can be moved over the additional content without the additional content disappearing; \
-        Persistent: The additional content remains visible until the hover or focus trigger is removed, the user dismisses it, or its information is no longer valid.'
+
+     //1_4_13.js
+    ,"1_4_13_F95.Check" : 'Vérifiez que lorsque la réception puis la suppression du survol du pointeur ou de la mise au point du clavier déclenche l\'affichage puis le masquage de contenu supplémentaire, les points suivants sont vrais : \
+        A supprimer : Un mécanisme est disponible pour rejeter le contenu supplémentaire sans déplacer le pointeur ou le focus du clavier, sauf si le contenu supplémentaire communique une erreur de saisie ou ne masque pas ou ne remplace pas un autre contenu; \
+        Survolable : Si le survol du pointeur peut déclencher le contenu supplémentaire, alors le pointeur peut être déplacé sur le contenu supplémentaire sans que le contenu supplémentaire ne disparaisse; \
+        Persistant : Le contenu supplémentaire reste visible jusqu\'à ce que le déclencheur de survol ou de mise au point soit supprimé, que l\'utilisateur le rejette ou que ses informations ne soient plus valables \
+    '
 
 
     //2_1_1.js
@@ -288,11 +289,10 @@ _global.translation['fr'] = {
 
 
     //2_1_4.js
-    ,"2_1_4.Check" : 'Check that if a keyboard shortcut is implemented in content using only letter (including upper- and lower-case letters), punctuation, number, or symbol characters, then at least one of the following is true: \
-     \
-        Turn off: A mechanism is available to turn the shortcut off; \
-        Remap: A mechanism is available to remap the shortcut to use one or more non-printable keyboard characters (e.g. Ctrl, Alt, etc); \
-        Active only on focus: The keyboard shortcut for a user interface component is only active when that component has focus. \
+    ,"2_1_4.Check" : 'Vérifiez que si un raccourci clavier est implémenté dans un contenu utilisant uniquement des lettres (y compris les majuscules et les minuscules), de la ponctuation, des chiffres ou des symboles, alors au moins l\'un des points suivants est vrai :  \
+        Désactiver : Un mécanisme est disponible pour désactiver le raccourci : \
+        Remap : Un mécanisme est disponible pour redéfinir le raccourci afin d\'utiliser un ou plusieurs caractères de clavier non imprimables (par exemple Ctrl, Alt, etc.); \
+        Actif uniquement pour la mise au point : Le raccourci clavier pour un composant de l\'interface utilisateur n\'est actif que lorsque ce composant a le focus. \
     '
 
 
@@ -320,7 +320,8 @@ _global.translation['fr'] = {
 
 
     //2_2_6.js
-    ,"2_2_6.Check" : 'Check that users are warned of the duration of any user inactivity that could cause data loss, unless the data is preserved for more than 20 hours when the user does not take any actions.'
+    ,"2_2_6.Check" : 'Vérifiez que les utilisateurs sont avertis de la durée de toute inactivité de l\'utilisateur qui pourrait entraîner une perte de données, à moins que les données ne soient conservées pendant plus de 20 heures lorsque l\'utilisateur n\'entreprend aucune action.'
+
 
 
     //2_3_1.js
@@ -332,7 +333,7 @@ _global.translation['fr'] = {
 
 
     //2_3_3.js
-    ,"2_3_3.Check" : 'Check that motion animation triggered by interaction can be disabled, unless the animation is essential to the functionality or the information being conveyed.'
+    ,"2_3_3.Check" : 'Vérifiez que l\'animation de mouvement déclenchée par l\'interaction peut être désactivée, à moins que l\'animation ne soit essentielle à la fonctionnalité ou à l\'information véhiculée.'
 
 
     //2_4_1.js
@@ -382,59 +383,53 @@ _global.translation['fr'] = {
 
 
     //2_5_1.js
-    ,"2_5_1.Check" : 'Check that all functionality that uses multipoint or path-based gestures for operation can be operated with a single pointer without a path-based gesture, unless a multipoint or path-based gesture is essential.'
+    ,"2_5_1.Check" : 'Vérifiez que toutes les fonctionnalités qui utilisent des gestes multipoints ou basés sur le chemin peuvent être utilisées avec un seul pointeur sans geste basé sur le chemin, sauf si un geste multipoint ou basé sur le chemin est essentiel.'
+
 
 
 
     //2_5_2.js
-    ,"2_5_2.SinglePointer_Check" : "Check that for functionality that can be operated using a single pointer, at least one of the following is true: \
-        No Down-Event: The down-event of the pointer is not used to execute any part of the function; \
-        Abort or Undo: Completion of the function is on the up-event, and a mechanism is available to abort the function before completion or to undo the function after completion; \
-        Up Reversal: The up-event reverses any outcome of the preceding down-event; \
-        Essential: Completing the function on the down-event is essential."
-    ,"2_5_2.Mousedown_Check" : "This element has an mousedown event listener. Check that for functionality that can be operated using a single pointer, at least one of the following is true: \
-        No Down-Event: The down-event of the pointer is not used to execute any part of the function; \
-        Abort or Undo: Completion of the function is on the up-event, and a mechanism is available to abort the function before completion or to undo the function after completion; \
-        Up Reversal: The up-event reverses any outcome of the preceding down-event; \
-        Essential: Completing the function on the down-event is essential."
-    ,"2_5_2.Touchstart_Check" : "This element has a touchstart event listener. Check that for functionality that can be operated using a single pointer, at least one of the following is true: \
-     \
-        No Down-Event: The down-event of the pointer is not used to execute any part of the function; \
-        Abort or Undo: Completion of the function is on the up-event, and a mechanism is available to abort the function before completion or to undo the function after completion; \
-        Up Reversal: The up-event reverses any outcome of the preceding down-event; \
-        Essential: Completing the function on the down-event is essential."
-
+    ,"2_5_2.SinglePointer_Check" : "Vérifiez que pour les fonctionnalités qui peuvent être exploitées à l'aide d'un seul pointeur, au moins une des conditions suivantes est remplie : \
+        No Down-Event : Le down-event du pointeur n'est pas utilisé pour exécuter une partie de la fonction; \
+        Abandon ou Annulation : L'achèvement de la fonction se fait sur l'événement haut, et un mécanisme est disponible pour annuler la fonction avant l'achèvement ou pour annuler la fonction après l'achèvement; \
+        Inversion haut : Le up-event inverse tout résultat du down-event précédent; \
+        Essentiel : Il est essentiel de terminer la fonction lors de l'événement descendant."
+    ,"2_5_2.Mousedown_Check" : "Cet élément a un écouteur d'événement \"mousedown\". Vérifiez que pour les fonctionnalités qui peuvent être exploitées à l'aide d'un seul pointeur, au moins une des conditions suivantes est remplie : \
+        No Down-Event : Le down-event du pointeur n'est pas utilisé pour exécuter une partie de la fonction; \
+        Abandon ou Annulation : L'achèvement de la fonction se fait sur l'événement haut, et un mécanisme est disponible pour annuler la fonction avant l'achèvement ou pour annuler la fonction après l'achèvement; \
+        Inversion haut : Le up-event inverse tout résultat du down-event précédent; \
+        Essentiel : Il est essentiel de terminer la fonction lors de l'événement descendant."
+    ,"2_5_2.Touchstart_Check" : "Cet élément a un écouteur de l'événement Touchstart.  Vérifiez que pour les fonctionnalités qui peuvent être exploitées à l'aide d'un seul pointeur, au moins une des conditions suivantes est remplie :     \
+        No Down-Event : Le down-event du pointeur n'est pas utilisé pour exécuter une partie de la fonction; \
+        Abandon ou Annulation : L'achèvement de la fonction se fait sur l'événement haut, et un mécanisme est disponible pour annuler la fonction avant l'achèvement ou pour annuler la fonction après l'achèvement; \
+        Inversion haut : Le up-event inverse tout résultat du down-event précédent; \
+        Essentiel : Il est essentiel de terminer la fonction lors de l'événement descendant."
 
     //2_5_3.js
-    ,"2_5_3_F96.Check" : "Check that for user interface components with labels that include text or images of text, the name contains the text that is presented visually."
-    ,"2_5_3_F96.AccessibleName" : "Accessible name for this element does not contain the visible label text. Check that for user interface components with labels that include text or images of text, the name contains the text that is presented visually."
+    ,"2_5_3_F96.Check" : "Vérifiez que pour les composants de l'interface utilisateur dont les étiquettes comportent du texte ou des images de texte, le nom contient le texte qui est présenté visuellement."
+    ,"2_5_3_F96.AccessibleName" : "Le nom accessible de cet élément ne contient pas le texte visible de l'étiquette. Vérifiez que pour les composants de l'interface utilisateur dont les étiquettes comportent du texte ou des images de texte, le nom contient le texte qui est présenté visuellement."
 
 
     //2_5_4.js
-    ,"2_5_4.Check" : "Check that functionality that can be operated by device motion or user motion can also be operated by user interface components and responding to the motion can be disabled to prevent accidental actuation, except when: \
-     \
-        Supported Interface: The motion is used to operate functionality through an accessibility supported interface; \
-        Essential: The motion is essential for the function and doing so would invalidate the activity. \
+    ,"2_5_4.Check" : "Vérifiez que les fonctionnalités qui peuvent être commandées par le mouvement de l'appareil ou de l'utilisateur peuvent également être commandées par les composants de l'interface utilisateur et que la réponse au mouvement peut être désactivée pour éviter tout actionnement accidentel, sauf dans les cas suivants     \
+        Interface supportée : Le mouvement est utilisé pour faire fonctionner la fonctionnalité par le biais d'une interface accessible et prise en charge; \
+        Essentiel : Le mouvement est essentiel pour la fonction et le faire invaliderait l'activité. \
     "
-    ,"2_5_4.Devicemotion" : "This element has a devicemotion event listener. Check that functionality that can be operated by device motion or user motion can also be operated by user interface components and responding to the motion can be disabled to prevent accidental actuation, except when: \
-     \
-        Supported Interface: The motion is used to operate functionality through an accessibility supported interface; \
-        Essential: The motion is essential for the function and doing so would invalidate the activity. \
+    ,"2_5_4.Devicemotion" : "Cet élément a un auditeur d'événement de devicemotion. Vérifiez que les fonctionnalités qui peuvent être commandées par le mouvement de l'appareil ou de l'utilisateur peuvent également être commandées par les composants de l'interface utilisateur et que la réponse au mouvement peut être désactivée pour éviter tout actionnement accidentel, sauf dans les cas suivants \
+        Interface supportée : Le mouvement est utilisé pour faire fonctionner la fonctionnalité par le biais d'une interface accessible et prise en charge; \
+        Essentiel : Le mouvement est essentiel pour la fonction et le faire invaliderait l'activité. \
     "
 
 
     //2_5_5.js
-    ,"2_5_5.Check" : 'Check that the size of the target for pointer inputs is at least 44 by 44 CSS pixels except when: \
-     \
-        Equivalent: The target is available through an equivalent link or control on the same page that is at least 44 by 44 CSS pixels; \
-        Inline: The target is in a sentence or block of text; \
-        User Agent Control: The size of the target is determined by the user agent and is not modified by the author; \
-        Essential: A particular presentation of the target is essential to the information being conveyed. \
-    '
-
+    ,"2_5_5.Check" : 'Vérifiez que la taille de la cible pour les entrées de pointeur est au moins de 44 par 44 pixels CSS, sauf si : \
+        Equivalent : La cible est disponible par un lien ou un contrôle équivalent sur la même page qui est au moins de 44 par 44 pixels CSS; \
+        Inline : La cible se trouve dans une phrase ou un bloc de texte; \
+        Contrôle de l\'agent utilisateur : La taille de la cible est déterminée par l\'agent utilisateur et n\'est pas modifiée par l\'auteur; \
+        Essentiel : Une présentation particulière de la cible est essentielle à l\'information véhiculée'
 
     //2_5_6.js
-    ,"2_5_6.Check" : 'Check that the content does not restrict use of input modalities available on a platform except where the restriction is essential, required to ensure the security of the content, or required to respect user settings.'
+    ,"2_5_6.Check" : 'Vérifier que le contenu ne restreint pas l\'utilisation des modalités de saisie disponibles sur une plate-forme, sauf si la restriction est essentielle, nécessaire pour assurer la sécurité du contenu ou requise pour respecter les paramètres de l\'utilisateur.'
 
 
     //3_1_1.js
@@ -535,7 +530,7 @@ _global.translation['fr'] = {
     ,"4_1_2_value_exposed_using_attribute" : 'Une valeur est exposée à l\'aide de l\'attribut {{requiredValue}}.'
     ,"4_1_2_value_exposed_using_element" : 'Une valeur est exposée à l\'aide de l\'élément {{requiredValue}}.'
 
-    
+
     //4_1_3.js
-    ,"4_1_3_ARIA22,G199,ARIA19,G83,G84,G85,G139,G177,G194,ARIA23,ARIA22.Check" : 'Check that status messages can be programmatically determined through role or properties such that they can be presented to the user by assistive technologies without receiving focus.'
+    ,"4_1_3_ARIA22,G199,ARIA19,G83,G84,G85,G139,G177,G194,ARIA23.Check" : 'Vérifier que les messages de statut peuvent être déterminés par programme grâce à des rôles ou des propriétés tels qu\'ils peuvent être présentés à l\'utilisateur par des technologies d\'assistance sans recevoir de mise au point.'
 };
