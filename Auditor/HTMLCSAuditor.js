@@ -166,7 +166,7 @@ _global.HTMLCSAuditor = new function()
     var buildHeaderSection = function(standard, wrapper) {
         var header       = _doc.createElement('div');
         header.className = _prefix + 'header';
-        header.innerHTML = 'BOSA Accessibility Check';
+        header.innerHTML = 'BOSA-Radix Accessibility Check';
         header.setAttribute('title', _global.HTMLCS.getTranslation("auditor_using_standard") + standard);
 
         var dragging = false;
@@ -1705,6 +1705,30 @@ _global.HTMLCSAuditor = new function()
                 source = source.value;
             }//end if
         }
+       
+        
+        var source_code = document.documentElement.outerHTML;
+        var json_object = JSON.stringify(
+            {
+                'html': source_code,
+                'url': window.location.href
+            });
+        console.log('Sending data...');
+        // console.log(json_object);
+        // var blob = new Blob([{'source': JSON.stringify(source_code)}], {type: 'text/plain'});
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "http://0.0.0.0:8000/check/", true);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.onreadystatechange = function() {
+            console.log(this.status);
+            if (this.readyState == 4 && this.status == 200) {
+                var response = this.responseText; 
+                console.log(response);
+            }
+        };
+        xhttp.send(json_object);   
+        // xhttp.send(blob);   
 
         if ((source instanceof Array) === false) {
             source = [source];
