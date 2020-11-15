@@ -1707,6 +1707,7 @@ _global.HTMLCSAuditor = new function()
         }
        
         function toDataURL(src, callback, outputFormat) {
+            // console.log('encoding '+src);
             var img = new Image();
             img.crossOrigin = 'Anonymous';
             img.onload = function() {
@@ -1716,8 +1717,12 @@ _global.HTMLCSAuditor = new function()
                 canvas.height = this.naturalHeight;
                 canvas.width = this.naturalWidth;
                 ctx.drawImage(this, 0, 0);
+                console.log('ready for dataUrl for '+src);
                 dataURL = canvas.toDataURL(outputFormat);
-                callback(dataURL);
+                callback(src, dataURL, false);
+            };
+            img.onerror = function(){
+                callback(src, null, true);
             };
             img.src = src;
             if (img.complete || img.complete === undefined) {
@@ -1726,70 +1731,60 @@ _global.HTMLCSAuditor = new function()
             }
         }
 
-        var source_code = document.documentElement.outerHTML;
-        var resources = window.performance.getEntriesByType("resource");
-        var images = new Array();
-        resources.forEach(function (resource) {
-            // console.log(resource.name);
-            if(resource.name.match(/.(jpg|jpeg|png|gif)$/i)) images.push(resource.name);
-        });
-        console.log(images);
-        toDataURL(
-            images[0],
-            function(dataUrl) {
-                console.log('RESULT:', dataUrl);
-                console.log(dataUrl.length);
-
-                var json_object = JSON.stringify(
-                    {
-                        'html': source_code,
-                        'url': window.location.href,
-                        'image': dataUrl
+        function encodeResources(resources, callback) {
+            var total = resources.length;
+            var result = new Array();
+         
+            var checkFinished = function(src, dataUrl, error) {
+                // console.log('Finished for '+src);
+                if(error){
+                    total--;
+                }else{
+                    result.push({
+                        'name': src,
+                        'data':dataUrl
                     });
+                }
+                if (result.length == total && callback) {
+                    callback(result);
+                }
+            };
+         
+            resources.forEach(function(resource){
+                // console.log(resource);
+                toDataURL(resource, checkFinished);
+            });
+        }
 
-                $.ajax({
-                    url: "http://0.0.0.0:8000/check/",
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: json_object
-                }).done(function(data) {console.log("success");}).fail(function() {console.log("error");});
-            }
-        );
+        function sendData(source_code, images){
+            var json_object = JSON.stringify(
+                {
+                    'html': source_code,
+                    'url': window.location.href,
+                    'images': images
+                }
+            );
+            $.ajax({
+                url: "http://0.0.0.0:8000/check/",
+                type: 'POST',
+                contentType: 'application/json',
+                data: json_object
+            }).done(function(data) {console.log("success");}).fail(function() {console.log("error");});
+        }
 
+        var source_code = document.documentElement.outerHTML;
+        var resources_paths = window.performance.getEntriesByType("resource");
+        var images_paths = resources_paths.filter(function(resource){
+            return resource.name.match(/.(jpg|jpeg|png|gif)$/i);
+        }).map(function(resource){
+            return resource.name;
+        });
+        console.log(images_paths);
+        encodeResources(images_paths, function(images){
+            console.log(images);
+            sendData(source_code, images);
+        });
 
-        // var zip = new JSZip();
-        // for (var i = 0; i < 5; i++) {
-        //     var txt = 'hello';
-        //     zip.file("file" + i + ".txt", txt);
-        // }
-        // // zip.generateAsync({type:"blob"})
-        // zip.generateAsync({
-        //     // type: "base64"
-        //     type: "blob"
-        // }).then(function(file) {
-        //     var formData = new FormData();
-        //     formData.append("file", file, "file");
-        //     var json_object = JSON.stringify(
-        //         {
-        //             'html': source_code,
-        //             'url': window.location.href,
-        //             'file': formData
-        //         });
-        //     console.log('Sending data...');
-        //     var xhttp = new XMLHttpRequest();
-        //     xhttp.open("POST", "http://0.0.0.0:8000/check/", true);
-        //     xhttp.setRequestHeader("Content-Type", "application/json");
-        //     xhttp.onreadystatechange = function() {
-        //         console.log(this.status);
-        //         if (this.readyState == 4 && this.status == 200) {
-        //             var response = this.responseText; 
-        //             console.log(response);
-        //         }
-        //     };
-        //     xhttp.send(json_object); 
-        // });  
-        // console.log(json_object);
-        // var blob = new Blob([{'source': JSON.stringify(source_code)}], {type: 'text/plain'});
 
         if ((source instanceof Array) === false) {
             source = [source];
