@@ -1706,29 +1706,90 @@ _global.HTMLCSAuditor = new function()
             }//end if
         }
        
-        
+        function toDataURL(src, callback, outputFormat) {
+            var img = new Image();
+            img.crossOrigin = 'Anonymous';
+            img.onload = function() {
+                var canvas = document.createElement('CANVAS');
+                var ctx = canvas.getContext('2d');
+                var dataURL;
+                canvas.height = this.naturalHeight;
+                canvas.width = this.naturalWidth;
+                ctx.drawImage(this, 0, 0);
+                dataURL = canvas.toDataURL(outputFormat);
+                callback(dataURL);
+            };
+            img.src = src;
+            if (img.complete || img.complete === undefined) {
+                img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+                img.src = src;
+            }
+        }
+
         var source_code = document.documentElement.outerHTML;
-        var json_object = JSON.stringify(
-            {
-                'html': source_code,
-                'url': window.location.href
-            });
-        console.log('Sending data...');
+        var resources = window.performance.getEntriesByType("resource");
+        var images = new Array();
+        resources.forEach(function (resource) {
+            // console.log(resource.name);
+            if(resource.name.match(/.(jpg|jpeg|png|gif)$/i)) images.push(resource.name);
+        });
+        console.log(images);
+        toDataURL(
+            images[0],
+            function(dataUrl) {
+                console.log('RESULT:', dataUrl);
+                console.log(dataUrl.length);
+
+                var json_object = JSON.stringify(
+                    {
+                        'html': source_code,
+                        'url': window.location.href,
+                        'image': dataUrl
+                    });
+
+                $.ajax({
+                    url: "http://0.0.0.0:8000/check/",
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: json_object
+                }).done(function(data) {console.log("success");}).fail(function() {console.log("error");});
+            }
+        );
+
+
+        // var zip = new JSZip();
+        // for (var i = 0; i < 5; i++) {
+        //     var txt = 'hello';
+        //     zip.file("file" + i + ".txt", txt);
+        // }
+        // // zip.generateAsync({type:"blob"})
+        // zip.generateAsync({
+        //     // type: "base64"
+        //     type: "blob"
+        // }).then(function(file) {
+        //     var formData = new FormData();
+        //     formData.append("file", file, "file");
+        //     var json_object = JSON.stringify(
+        //         {
+        //             'html': source_code,
+        //             'url': window.location.href,
+        //             'file': formData
+        //         });
+        //     console.log('Sending data...');
+        //     var xhttp = new XMLHttpRequest();
+        //     xhttp.open("POST", "http://0.0.0.0:8000/check/", true);
+        //     xhttp.setRequestHeader("Content-Type", "application/json");
+        //     xhttp.onreadystatechange = function() {
+        //         console.log(this.status);
+        //         if (this.readyState == 4 && this.status == 200) {
+        //             var response = this.responseText; 
+        //             console.log(response);
+        //         }
+        //     };
+        //     xhttp.send(json_object); 
+        // });  
         // console.log(json_object);
         // var blob = new Blob([{'source': JSON.stringify(source_code)}], {type: 'text/plain'});
-
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "http://0.0.0.0:8000/check/", true);
-        xhttp.setRequestHeader("Content-Type", "application/json");
-        xhttp.onreadystatechange = function() {
-            console.log(this.status);
-            if (this.readyState == 4 && this.status == 200) {
-                var response = this.responseText; 
-                console.log(response);
-            }
-        };
-        xhttp.send(json_object);   
-        // xhttp.send(blob);   
 
         if ((source instanceof Array) === false) {
             source = [source];

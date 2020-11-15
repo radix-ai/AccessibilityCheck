@@ -25,7 +25,7 @@ module.exports = function (grunt) {
                     footer: grunt.file.read('Contrib/Build/umd-footer.js')
                 },
                 files: {
-                    'build/HTMLCS.js': ['Translations/*.js', 'Standards/**/*.js', 'HTMLCS.js', 'HTMLCS.Util.js', 'Contrib/PhantomJS/runner.js', 'Auditor/HTMLCSAuditor.js']
+                    'build/HTMLCS.js': ['jszip.min.js', 'jquery.min.js', 'Translations/*.js', 'Standards/**/*.js', 'HTMLCS.js', 'HTMLCS.Util.js', 'Contrib/PhantomJS/runner.js', 'Auditor/HTMLCSAuditor.js']
                 }
             },
             bookmarklet: {
