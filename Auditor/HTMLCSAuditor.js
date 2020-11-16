@@ -1707,7 +1707,6 @@ _global.HTMLCSAuditor = new function()
         }
        
         function toDataURL(src, callback, outputFormat) {
-            // console.log('encoding '+src);
             var img = new Image();
             img.crossOrigin = 'Anonymous';
             img.onload = function() {
@@ -1731,37 +1730,55 @@ _global.HTMLCSAuditor = new function()
             }
         }
 
+        function fetchResource(resource, callback){
+            $.ajax({
+                url: resource,
+                dataType: "text",
+                success: function(text) {
+                    callback(resource, text, false);
+                }
+            });
+        }
+
         function encodeResources(resources, callback) {
             var total = resources.length;
-            var result = new Array();
+            var done = 0;
+            var images = new Array();
+            var texts  = new Array();
          
-            var checkFinished = function(src, dataUrl, error) {
+            var checkFinished = function(src, data, error) {
                 // console.log('Finished for '+src);
                 if(error){
                     total--;
                 }else{
-                    result.push({
+                    var target = src.match(/.(jpg|jpeg|png|gif)$/i) ? images : texts;
+                    target.push({
                         'name': src,
-                        'data':dataUrl
+                        'data': data
                     });
+                    done++;
                 }
-                if (result.length == total && callback) {
-                    callback(result);
+                if (done == total && callback) {
+                    callback(images, texts);
                 }
             };
          
             resources.forEach(function(resource){
-                // console.log(resource);
-                toDataURL(resource, checkFinished);
+                if(resource.match(/.(jpg|jpeg|png|gif)$/i)){
+                    toDataURL(resource, checkFinished);
+                }else{
+                    fetchResource(resource, checkFinished);
+                }
             });
         }
 
-        function sendData(source_code, images){
+        function sendData(source_code, images, texts){
             var json_object = JSON.stringify(
                 {
                     'html': source_code,
                     'url': window.location.href,
-                    'images': images
+                    'images': images,
+                    'texts': texts
                 }
             );
             $.ajax({
@@ -1773,16 +1790,18 @@ _global.HTMLCSAuditor = new function()
         }
 
         var source_code = document.documentElement.outerHTML;
-        var resources_paths = window.performance.getEntriesByType("resource");
-        var images_paths = resources_paths.filter(function(resource){
-            return resource.name.match(/.(jpg|jpeg|png|gif)$/i);
+        console.log(window.location.href);
+        var resources_paths = window.performance.getEntriesByType("resource").filter(function(resource){
+            return resource.name.includes(window.location.href);
         }).map(function(resource){
             return resource.name;
         });
-        console.log(images_paths);
-        encodeResources(images_paths, function(images){
+        console.log('resources');
+        console.log(resources_paths);
+        encodeResources(resources_paths, function(images, texts){
             console.log(images);
-            sendData(source_code, images);
+            console.log(texts);
+            sendData(source_code, images, texts);
         });
 
 
