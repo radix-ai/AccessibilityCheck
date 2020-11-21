@@ -1705,82 +1705,16 @@ _global.HTMLCSAuditor = new function()
                 source = source.value;
             }//end if
         }
-       
-        function toDataURL(src, callback, outputFormat) {
-            var img = new Image();
-            img.crossOrigin = 'Anonymous';
-            img.onload = function() {
-                var canvas = document.createElement('CANVAS');
-                var ctx = canvas.getContext('2d');
-                var dataURL;
-                canvas.height = this.naturalHeight;
-                canvas.width = this.naturalWidth;
-                ctx.drawImage(this, 0, 0);
-                console.log('ready for dataUrl for '+src);
-                dataURL = canvas.toDataURL(outputFormat);
-                callback(src, dataURL, false);
-            };
-            img.onerror = function(){
-                callback(src, null, true);
-            };
-            img.src = src;
-            if (img.complete || img.complete === undefined) {
-                img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
-                img.src = src;
-            }
-        }
 
-        function fetchResource(resource, callback){
-            $.ajax({
-                url: resource,
-                dataType: "text",
-                success: function(text) {
-                    callback(resource, text, false);
-                }
-            });
-        }
-
-        function encodeResources(resources, callback) {
-            var total = resources.length;
-            var done = 0;
-            var images = new Array();
-            var texts  = new Array();
-         
-            var checkFinished = function(src, data, error) {
-                // console.log('Finished for '+src);
-                if(error){
-                    total--;
-                }else{
-                    var target = src.match(/.(jpg|jpeg|png|gif)$/i) ? images : texts;
-                    target.push({
-                        'name': src,
-                        'data': data
-                    });
-                    done++;
-                }
-                if (done == total && callback) {
-                    callback(images, texts);
-                }
-            };
-         
-            resources.forEach(function(resource){
-                if(resource.match(/.(jpg|jpeg|png|gif)$/i)){
-                    toDataURL(resource, checkFinished);
-                }else{
-                    fetchResource(resource, checkFinished);
-                }
-            });
-        }
-
-        function sendData(source_code, images, texts){
+        function sendData(){
             var json_object = JSON.stringify(
                 {
-                    'html': source_code,
                     'url': window.location.href,
-                    'images': images,
-                    'texts': texts
+                    'screen_width': window.screen.availWidth,
+                    'screen_height': window.screen.availHeight,
                 }
             );
+            console.log(json_object)
             $.ajax({
                 url: "http://0.0.0.0:8000/check/",
                 type: 'POST',
@@ -1788,22 +1722,7 @@ _global.HTMLCSAuditor = new function()
                 data: json_object
             }).done(function(data) {console.log("success");}).fail(function() {console.log("error");});
         }
-
-        var source_code = document.documentElement.outerHTML;
-        console.log(window.location.href);
-        var resources_paths = window.performance.getEntriesByType("resource").filter(function(resource){
-            return resource.name.includes(window.location.href);
-        }).map(function(resource){
-            return resource.name;
-        });
-        console.log('resources');
-        console.log(resources_paths);
-        encodeResources(resources_paths, function(images, texts){
-            console.log(images);
-            console.log(texts);
-            sendData(source_code, images, texts);
-        });
-
+        sendData();
 
         if ((source instanceof Array) === false) {
             source = [source];
