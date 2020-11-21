@@ -1710,8 +1710,8 @@ _global.HTMLCSAuditor = new function()
             var json_object = JSON.stringify(
                 {
                     'url': window.location.href,
-                    'screen_width': window.screen.availWidth,
-                    'screen_height': window.screen.availHeight,
+                    'window_width': window.screen.availWidth,
+                    'window_height': window.screen.availHeight,
                 }
             );
             console.log(json_object)
