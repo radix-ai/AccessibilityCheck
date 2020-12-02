@@ -21,11 +21,15 @@ module.exports = function (grunt) {
             },
             dist: {
                 options: {
+                    compress: false,
+                    mangle: false,
+                    beautify: true,
+                    preserveComments: true,
                     banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */\n' + grunt.file.read('Contrib/Build/umd-header.js'),
                     footer: grunt.file.read('Contrib/Build/umd-footer.js')
                 },
                 files: {
-                    'build/HTMLCS.js': ['jszip.min.js', 'jquery.min.js', 'Translations/*.js', 'Standards/**/*.js', 'HTMLCS.js', 'HTMLCS.Util.js', 'Contrib/PhantomJS/runner.js', 'Auditor/HTMLCSAuditor.js']
+                    'build/HTMLCS.js': ['jquery.min.js', 'Translations/*.js', 'Standards/**/*.js', 'HTMLCS.js', 'HTMLCS.Util.js', 'Contrib/PhantomJS/runner.js', 'Auditor/HTMLCSAuditor.js']
                 }
             },
             bookmarklet: {

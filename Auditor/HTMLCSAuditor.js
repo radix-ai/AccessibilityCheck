@@ -37,6 +37,7 @@ _global.HTMLCSAuditor = new function()
     var _doc      = null;
     var _top      = null;
     var _messages = [];
+    var _server_messages = [];
     var _page     = 1;
     var _sbWidth  = null;
 
@@ -770,6 +771,7 @@ _global.HTMLCSAuditor = new function()
                 };
 
                 var wrapper    = _doc.getElementById(_prefix + 'wrapper');
+                _messages = _server_messages.concat(_messages);
                 var newWrapper = self.build(_standard, _messages, _options);
 
                 if (_options.parentElement) {
@@ -787,7 +789,7 @@ _global.HTMLCSAuditor = new function()
         };
 
         var wrapper = _doc.getElementById(_prefix + 'wrapper');
-        var levels  = self.countIssues(_messages);
+        var levels  = self.countIssues(_messages.concat(_server_messages));
 
         // Set default show options based on the first run. Don't re-do these, let
         // the user's settings take priority, unless there is no message.
@@ -1395,6 +1397,7 @@ _global.HTMLCSAuditor = new function()
         return counts;
     };
 
+    // Build report
     this.build = function(standard, messages, options) {
         var wrapper = null;
         if (_doc) {
@@ -1706,24 +1709,6 @@ _global.HTMLCSAuditor = new function()
             }//end if
         }
 
-        function sendData(){
-            var json_object = JSON.stringify(
-                {
-                    'url': window.location.href,
-                    'window_width': window.screen.availWidth,
-                    'window_height': window.screen.availHeight,
-                }
-            );
-            console.log(json_object)
-            $.ajax({
-                url: "http://0.0.0.0:8000/v1/check_url/",
-                type: 'POST',
-                contentType: 'application/json',
-                data: json_object
-            }).done(function(data) {console.log("success");}).fail(function() {console.log("error");});
-        }
-        sendData();
-
         if ((source instanceof Array) === false) {
             source = [source];
         }//end if
@@ -1858,6 +1843,39 @@ _global.HTMLCSAuditor = new function()
         };
 
         _processSource(standard, _sources.concat([]));
+
+        function sendData(){
+            var json_object = JSON.stringify(
+                {
+                    'url': "https://rdx201.kumulus.11ways.be/index.html", //window.location.href,
+                    'window_width': window.screen.availWidth,
+                    'window_height': window.screen.availHeight,
+                }
+            );  
+            $.ajax({
+                url: "http://0.0.0.0:8000/v1/check_url/",
+                type: 'POST',
+                contentType: 'application/json',
+                data: json_object
+            }).done(handleErrors).fail(function() {console.log("error");});
+            // handleErrors({
+            //     "errors": [
+            //         {"text": "bla1", "contrast": 5.0},
+            //         {"text": "bla2", "contrast": 9.4}
+            //     ]
+            // });
+        }
+
+        function handleErrors(response){
+            response.errors.forEach(function(error){
+                // var text = 'This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of {value}.'
+                var text = 'Low contrast detected for the word "'+error.text+'" : contrast value is '+error.contrast+' (< 4.5)';
+                _server_messages.unshift({msg:text, element: document.getElementsByTagName('head')[0], type: 1, code: 'WCAG2AAA.Principle1.Guideline1_4.1_4_3_Contrast.G18'});
+            });
+            _finalise();
+        }
+
+        sendData();
     };
 
     this.versionCheck = function(response) {
@@ -2110,6 +2128,7 @@ _global.HTMLCSAuditor = new function()
         },
 
         isPointable: function(elem) {
+            if(elem == null) return false;
             // If the specified elem is not in the DOM then we cannot point to it.
             // Also, cannot point to the document itself.
             if (elem.ownerDocument === null) {
