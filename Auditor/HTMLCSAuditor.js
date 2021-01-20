@@ -1847,30 +1847,39 @@ _global.HTMLCSAuditor = new function()
         function sendData(){
             var json_object = JSON.stringify(
                 {
-                    'url': "https://rdx201.kumulus.11ways.be/index.html", //window.location.href,
+                    'url': window.location.href, 
                     'window_width': window.screen.availWidth,
                     'window_height': window.screen.availHeight,
                 }
             );  
+            console.log(json_object);
             $.ajax({
                 url: "http://0.0.0.0:8000/v1/check_url/",
+                // url: "https://accessibility-check.radix.sh/v1/check_url/",
                 type: 'POST',
                 contentType: 'application/json',
                 data: json_object
             }).done(handleErrors).fail(function() {console.log("error");});
-            // handleErrors({
-            //     "errors": [
-            //         {"text": "bla1", "contrast": 5.0},
-            //         {"text": "bla2", "contrast": 9.4}
-            //     ]
-            // });
+            // handleErrors({errors: [{contrast: 2}]});
+        }
+
+        function getElementByXpath(path) {
+            return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
         }
 
         function handleErrors(response){
+            console.log('Server response received!');
             response.errors.forEach(function(error){
-                // var text = 'This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of {value}.'
-                var text = 'Low contrast detected for the word "'+error.text+'" : contrast value is '+error.contrast+' (< 4.5)';
-                _server_messages.unshift({msg:text, element: document.getElementsByTagName('head')[0], type: 1, code: 'WCAG2AAA.Principle1.Guideline1_4.1_4_3_Contrast.G18'});
+                var text = 'This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of '+ error.contrast.toFixed(2) +'.'
+                // var text = 'Low contrast detected: contrast value is '+ error.contrast.toFixed(2) +' (< 4.5)';
+                // error.xpath = "/html[1]/body[1]/div[1]/header[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[1]/a[1]";
+                error_node = {
+                    msg: text, 
+                    element: getElementByXpath(error.xpath),
+                    type: 1, 
+                    code: 'WCAG2AAA.Principle1.Guideline1_4.1_4_3_Contrast.G18'
+                };
+                if(error_node.element != null) _server_messages.unshift(error_node);
             });
             _finalise();
         }
