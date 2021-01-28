@@ -1767,6 +1767,7 @@ _global.HTMLCSAuditor = new function()
             parentEl.appendChild(wrapper);
         }
 
+        if(window._sent === undefined) window._sent = false;
         // Process and replace with the issue list when finished.
         var _finalise = function() {
             // Before then, ignore warnings arising from the Advisor interface itself.
@@ -1845,6 +1846,8 @@ _global.HTMLCSAuditor = new function()
         _processSource(standard, _sources.concat([]));
 
         function sendData(){
+            if(window._sent == true) return;
+            window._sent = true;
             var json_object = JSON.stringify(
                 {
                     'url': window.location.href, 
@@ -1877,10 +1880,11 @@ _global.HTMLCSAuditor = new function()
                     'WCAG_1_4_3': 'WCAG2AAA.Principle1.Guideline1_4.1_4_3_Contrast.G18',
                     'WCAG_1_4_11': 'WCAG2AAA.Principle1.Guideline1_4.1_4_11_Contrast.G21',
                 };
+                var msg_type = (error.contrast > 3.8 ? 2 : 1);
                 error_node = {
                     msg: texts[error.wcag_criterion], 
                     element: getElementByXpath(error.xpath),
-                    type: 1, 
+                    type: msg_type, 
                     code: codes[error.wcag_criterion]
                 };
                 if(error_node.element != null) _server_messages.unshift(error_node);
