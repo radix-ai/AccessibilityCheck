@@ -1874,17 +1874,24 @@ _global.HTMLCSAuditor = new function()
             response.errors.forEach(function(error){
                 var texts = {
                     'WCAG_1_4_3': 'This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of '+ error.contrast.toFixed(2) +'.',
-                    'WCAG_1_4_11': 'This interactive element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but this element has a contrast ratio of '+ error.contrast.toFixed(2) +'.'
+                    'WCAG_1_4_11': 'This interactive element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but this element has a contrast ratio of '+ error.contrast.toFixed(2) +'.',
+                    'WCAG_3_1_1': 'The web page is defined as being in the language "'+ error.html_language +'" but its contents appear to be in "'+ error.predicted_language +'".',
+                    'WCAG_3_1_2': 'This element is defined as being in the language "'+ error.html_language +'" but its contents appear to be in "'+ error.predicted_language +'".'
                 };
                 var codes = {
                     'WCAG_1_4_3': 'WCAG2AAA.Principle1.Guideline1_4.1_4_3_Contrast.G18',
                     'WCAG_1_4_11': 'WCAG2AAA.Principle1.Guideline1_4.1_4_11_Contrast.G21',
+                    'WCAG_3_1_1': 'WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.3.Lang',
+                    'WCAG_3_1_2': 'WCAG2AAA.Principle3.Guideline3_1.3_1_2.H58',
                 };
-                var msg_type = (error.contrast > 3.8 ? 2 : 1);
+                var msg_type = 1;
+                if ('contrast' in error && error.contrast > 3.8) {
+                    msg_type = 2;
+                }
                 error_node = {
-                    msg: texts[error.wcag_criterion], 
+                    msg: texts[error.wcag_criterion],
                     element: getElementByXpath(error.xpath),
-                    type: msg_type, 
+                    type: msg_type,
                     code: codes[error.wcag_criterion]
                 };
                 if(error_node.element != null) _server_messages.unshift(error_node);
