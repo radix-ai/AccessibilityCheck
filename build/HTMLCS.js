@@ -10828,7 +10828,7 @@ _global.HTMLCSAuditor = new function() {
             });
             console.log(json_object);
             $.ajax({
-                url: "http://0.0.0.0:8000/v1/check_url/",
+                url: "http://127.0.0.1:8000/v1/check_url/",
                 type: "POST",
                 contentType: "application/json",
                 data: json_object
