@@ -1872,12 +1872,14 @@ _global.HTMLCSAuditor = new function()
         function handleErrors(response){
             console.log('Server response received!');
             response.errors.forEach(function(error){
-                var texts = {
-                    'WCAG_1_4_3': 'This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of '+ error.contrast.toFixed(2) +'.',
-                    'WCAG_1_4_11': 'This interactive element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but this element has a contrast ratio of '+ error.contrast.toFixed(2) +'.',
-                    'WCAG_3_1_1': 'The web page is defined as being in the language "'+ error.html_language +'" but its contents appear to be in "'+ error.predicted_language +'".',
-                    'WCAG_3_1_2': 'This element is defined as being in the language "'+ error.html_language +'" but its contents appear to be in "'+ error.predicted_language +'".'
-                };
+                var texts = {};
+                if ('contrast' in error) {
+                    texts['WCAG_1_4_3'] = 'This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of '+ error.contrast.toFixed(2) +'.';
+                    texts['WCAG_1_4_11'] = 'This interactive element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but this element has a contrast ratio of '+ error.contrast.toFixed(2) +'.';
+                } else if ('html_language' in error) {
+                    texts['WCAG_3_1_1'] = 'The web page is defined as being in the language "'+ error.html_language +'" but its contents appear to be in "'+ error.predicted_language +'".',
+                    texts['WCAG_3_1_2'] = 'This element is defined as being in the language "'+ error.html_language +'" but its contents appear to be in "'+ error.predicted_language +'".'
+                }
                 var codes = {
                     'WCAG_1_4_3': 'WCAG2AAA.Principle1.Guideline1_4.1_4_3_Contrast.G18',
                     'WCAG_1_4_11': 'WCAG2AAA.Principle1.Guideline1_4.1_4_11_Contrast.G21',
